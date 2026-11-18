@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,21 +45,22 @@
     <header>
         <div class="brand">Paracosm</div>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: October 26, 2026</p>
+        <p class="updated">Last updated: November 18, 2026</p>
     </header>
 
     <main>
         <section>
             <h2>1. Overview</h2>
             <p>
-                Paracosm is an Android application that allows users to create
-                fictional worlds, characters, locations, and stories, and interact
-                with them through AI-powered text-based roleplay.
+                Paracosm is an Android application for adults that allows users to
+                create fictional worlds, characters, locations, and stories, and
+                interact with them through AI-powered text-based roleplay.
             </p>
             <p>
                 This Privacy Policy explains what information Paracosm accesses,
                 how that information is processed, and when it is transmitted
-                to external services.
+                to external services. Use of Paracosm is also governed by the
+                <a href="https://roteck-anomaly.github.io/paracosm-terms-of-service/">Terms of Service</a>.
             </p>
         </section>
 
@@ -69,24 +69,37 @@
             <p>
                 Paracosm primarily stores user-created content locally on the
                 user's device. This includes fictional worlds, character profiles,
-                locations, conversations, application settings, and generated
-                character portraits.
+                locations, conversations, application settings, and character
+                portraits.
+            </p>
+            <p>
+                API keys entered by the user are stored in encrypted local storage
+                backed by Android's security facilities, and can additionally be
+                protected by the device's lock screen.
+            </p>
+            <p>
+                Backups created by Paracosm are saved where the user chooses. Each
+                backup includes a one-way (SHA-256) hash of the device's Android ID,
+                so that a restore can recognize whether a backup came from the same
+                device. The Android ID itself is never stored in a backup.
             </p>
             <p>
                 This information remains on the device unless a feature requiring
-                external processing or synchronization is used.
+                external processing, synchronization, or sharing is used.
             </p>
         </section>
 
         <section>
             <h2>3. AI Processing</h2>
             <p>
-                Paracosm uses Google's Gemini API to generate narrative responses,
-                character dialogue, and other fictional content.
+                Paracosm uses AI models from two providers to generate narrative
+                responses, character dialogue, story summaries, and other fictional
+                content: Google's Gemini API and Anthropic's Claude API. The user
+                chooses which provider and model each Paracosm uses.
             </p>
             <p>
                 To provide these features, Paracosm transmits relevant information
-                to Google, which may include:
+                directly from the device to the chosen provider, which may include:
             </p>
             <ul>
                 <li>User-written messages and conversation history.</li>
@@ -95,9 +108,16 @@
                 <li>Other user-created content included in AI requests.</li>
             </ul>
             <p>
-                Gemini may temporarily cache request content to support processing
-                and performance. Google may also retain or process submitted
-                information according to its applicable service terms and policies.
+                Requests are made with the user's own API key for that provider.
+                While Paracosm is in testing, requests to Google may instead be made
+                with an API key provided by the developer. The developer does not
+                receive or store the content of these requests.
+            </p>
+            <p>
+                Providers may temporarily cache request content to support
+                processing and performance. Google and Anthropic may also retain or
+                process submitted information according to their applicable service
+                terms and policies.
             </p>
             <p>
                 Users should avoid including sensitive personal information in
@@ -109,13 +129,17 @@
             <h2>4. Character Portrait Generation</h2>
             <p>
                 Paracosm supports optional AI-generated character portraits.
-                Character descriptions and, when provided, reference images
-                may be transmitted to Google's Gemini services to generate
-                portraits.
+                Character descriptions and, when the user chooses to use one, the
+                character's current portrait as a reference image are transmitted
+                to Google's Gemini services to generate portraits.
             </p>
             <p>
-                Reference images are only submitted when the user chooses to
-                use them for portrait generation.
+                When a user uploads a photo as a character's portrait, Paracosm asks
+                whether it is a photo of a real person. If the user answers yes,
+                Paracosm stores a small marker beside the portrait on the device, and
+                every portrait generated from that photo is kept modest. The marker
+                is included when the character is backed up, synchronized, or
+                shared. It is never sent to an AI provider.
             </p>
         </section>
 
@@ -141,14 +165,44 @@
         </section>
 
         <section>
-            <h2>6. Diagnostic and Error Reports</h2>
+            <h2>6. Sharing and Exporting</h2>
+            <p>
+                Users can share or save Paracosms, characters, and locations as
+                files. A shared file contains the selected content and, where
+                applicable, its character portraits. Sharing only happens when the
+                user chooses to share, and the file is sent through the app the user
+                selects. The developer does not receive shared files.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Free Trial Verification</h2>
+            <p>
+                When Paracosm offers a free trial, it verifies the trial with the
+                developer's backend, which runs on Google Firebase. To do so,
+                Paracosm sends the device's Android ID to the backend, where it is
+                immediately converted into a one-way (SHA-256) hash. Only the hash,
+                together with the trial's start and end times, is stored, so that a
+                trial cannot be restarted on the same device. The Android ID itself
+                is never stored.
+            </p>
+            <p>
+                Requests to the backend are protected by Firebase App Check, which
+                uses Google Play Integrity to confirm that they come from a genuine
+                copy of Paracosm. Google processes device integrity information for
+                this purpose according to its own policies.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Diagnostic and Error Reports</h2>
             <p>
                 Paracosm records technical diagnostic information locally to
                 support troubleshooting. This may include application errors,
                 runtime logs, and details about application interactions.
             </p>
             <p>
-                Diagnostic reports are not automatically emailed to the developer.
+                Diagnostic reports are not automatically sent to the developer.
                 Users can voluntarily submit an encrypted error-report attachment
                 through an email application.
             </p>
@@ -159,11 +213,12 @@
         </section>
 
         <section>
-            <h2>7. Data Security</h2>
+            <h2>9. Data Security</h2>
             <p>
-                Paracosm uses HTTPS connections when communicating with the
-                supported Google APIs. User-provided API credentials are stored
-                in encrypted local storage backed by Android's security facilities.
+                Paracosm uses HTTPS connections when communicating with Google,
+                Anthropic, and Firebase services. User-provided API keys are stored
+                in encrypted local storage backed by Android's security facilities,
+                and are sent only to the provider they belong to.
             </p>
             <p>
                 Error-report attachments are encrypted before being prepared
@@ -177,7 +232,7 @@
         </section>
 
         <section>
-            <h2>8. Data Retention and Deletion</h2>
+            <h2>10. Data Retention and Deletion</h2>
             <p>
                 Local application data generally remains on the device until
                 the user deletes it or removes the application's local data.
@@ -189,34 +244,51 @@
                 cloud copies.
             </p>
             <p>
-                Data transmitted to Google services is subject to Google's
-                applicable retention and deletion practices.
+                Data transmitted to Google or Anthropic is subject to that
+                provider's applicable retention and deletion practices.
             </p>
             <p>
-                Users may request deletion of diagnostic reports previously
-                submitted to the developer by contacting the email address below.
+                Trial records are kept for as long as Paracosm offers trials, so
+                that a trial cannot be reused. Diagnostic reports are kept for as
+                long as they are useful for investigating problems.
+            </p>
+            <p>
+                Users may request deletion of reports they submitted, or of their
+                device's trial record, by contacting the email address below.
                 Additional information may be needed to identify the relevant
-                report.
+                record.
             </p>
         </section>
 
         <section>
-            <h2>9. Third-Party Services</h2>
+            <h2>11. Children's Privacy</h2>
             <p>
-                Paracosm integrates with Google's Gemini API, Google Sign-In,
-                and Google Drive. These services operate under their applicable
-                terms and privacy policies.
+                Paracosm is intended only for adults aged 18 and older, and is not
+                directed to children. The developer does not knowingly collect
+                information from anyone under 18. If you believe a child has sent
+                information to the developer, contact the email address below and
+                it will be deleted.
+            </p>
+        </section>
+
+        <section>
+            <h2>12. Third-Party Services</h2>
+            <p>
+                Paracosm integrates with Google's Gemini API, Anthropic's Claude
+                API, Google Sign-In, Google Drive, Google Firebase, and Google Play
+                services. These services operate under their applicable terms and
+                privacy policies.
             </p>
             <p>
                 Google's privacy information is available at
-                <a href="https://policies.google.com/privacy">
-                    policies.google.com/privacy
-                </a>.
+                <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
+                Anthropic's privacy information is available at
+                <a href="https://www.anthropic.com/legal/privacy">anthropic.com/legal/privacy</a>.
             </p>
         </section>
 
         <section>
-            <h2>10. Changes to This Policy</h2>
+            <h2>13. Changes to This Policy</h2>
             <p>
                 This Privacy Policy may be updated when Paracosm introduces
                 new features, integrations, or data-handling practices.
@@ -225,7 +297,7 @@
         </section>
 
         <section>
-            <h2>11. Contact</h2>
+            <h2>14. Contact</h2>
             <p>
                 For questions about privacy, data handling, or deletion requests,
                 contact the developer at:
