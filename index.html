@@ -45,7 +45,7 @@
     <header>
         <div class="brand">Paracosm</div>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: November 21, 2026</p>
+        <p class="updated">Last updated: November 21, 2026 (revision 2)</p>
     </header>
 
     <main>
@@ -84,9 +84,10 @@
                 device. The Android ID itself is never stored in a backup.
             </p>
             <p>
-                Paracosm also stores on the device whether it has been unlocked, and
-                when its free trial ends, so that it can check both without a network
-                connection.
+                Paracosm also stores on the device whether it has been unlocked, the
+                unlock purchase's token from Google Play, whether the device belongs
+                to a supporter, and when its free trial ends, so that it can check
+                these without a network connection.
             </p>
             <p>
                 This information remains on the device unless a feature requiring
@@ -235,16 +236,19 @@
                 purchase's token from Google Play. The backend confirms the donation
                 with Google Play, then stores a supporter record containing one-way
                 (SHA-256) hashes of those two identifiers and, for each donation, its
-                Google Play order number, the amount chosen, the price shown, and the
-                date. The identifiers themselves are never stored.
+                Google Play order number, the donation product, the price Google Play
+                showed when it was recorded, and the date. The identifiers themselves
+                are never stored.
             </p>
             <p>
                 Supporter records let Paracosm show a Supporter badge, and let the
                 developer recognise reports from supporters so they can be looked at
-                first. When a supporter installs Paracosm again or uses another
-                device, Paracosm asks the backend once whether it belongs to a
-                supporter. Whether the device belongs to a supporter is also stored on
-                the device.
+                first. To know whether to show the badge, Paracosm sends the same two
+                identifiers to the backend once after it is installed, and again
+                before an error report is sent. The backend uses them to look for a
+                matching supporter record, and when it finds one, it adds any hash the
+                record was missing, so a supporter is recognised on each of their
+                devices.
             </p>
         </section>
 
@@ -266,8 +270,9 @@
                 mark reports that come from supporters, Paracosm also sends the
                 device's Android ID and, once Paracosm is unlocked, the unlock
                 purchase's token. The backend uses them only to check whether the
-                sender is a supporter and never stores them with the report; only
-                whether the report came from a supporter is stored.
+                sender is a supporter, as described in Donations and Supporters, and
+                never stores them with the report; only whether the report came from a
+                supporter is stored.
             </p>
             <p>
                 The developer uses reports to investigate problems and improve how
