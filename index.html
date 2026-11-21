@@ -221,7 +221,35 @@
         </section>
 
         <section>
-            <h2>8. Content Reports</h2>
+            <h2>8. Donations and Supporters</h2>
+            <p>
+                Users can donate to the developer through Google Play. Google Play
+                processes each donation under its own terms and privacy policy, and
+                Paracosm never receives payment details. Donating is optional and
+                never unlocks anything.
+            </p>
+            <p>
+                To recognise supporters without any sign-in, Paracosm sends each
+                donation to the developer's backend on Google Firebase, together with
+                the device's Android ID and, once Paracosm is unlocked, the unlock
+                purchase's token from Google Play. The backend confirms the donation
+                with Google Play, then stores a supporter record containing one-way
+                (SHA-256) hashes of those two identifiers and, for each donation, its
+                Google Play order number, the amount chosen, the price shown, and the
+                date. The identifiers themselves are never stored.
+            </p>
+            <p>
+                Supporter records let Paracosm show a Supporter badge, and let the
+                developer recognise reports from supporters so they can be looked at
+                first. When a supporter installs Paracosm again or uses another
+                device, Paracosm asks the backend once whether it belongs to a
+                supporter. Whether the device belongs to a supporter is also stored on
+                the device.
+            </p>
+        </section>
+
+        <section>
+            <h2>9. Content Reports</h2>
             <p>
                 Users can report AI-generated responses they find offensive or
                 harmful from within Paracosm. A report is sent to the developer's
@@ -234,14 +262,21 @@
                 <li>The AI provider and model the Paracosm uses, and the app version.</li>
             </ul>
             <p>
-                Reports never include images, API keys, device identifiers, or
-                account information. The developer uses reports to investigate
-                problems and improve how Paracosm guides AI-generated content.
+                Reports never include images, API keys, or account information. To
+                mark reports that come from supporters, Paracosm also sends the
+                device's Android ID and, once Paracosm is unlocked, the unlock
+                purchase's token. The backend uses them only to check whether the
+                sender is a supporter and never stores them with the report; only
+                whether the report came from a supporter is stored.
+            </p>
+            <p>
+                The developer uses reports to investigate problems and improve how
+                Paracosm guides AI-generated content.
             </p>
         </section>
 
         <section>
-            <h2>9. Diagnostic and Error Reports</h2>
+            <h2>10. Diagnostic and Error Reports</h2>
             <p>
                 Paracosm records technical diagnostic information locally to
                 support troubleshooting. This may include application errors,
@@ -253,13 +288,20 @@
                 through an email application.
             </p>
             <p>
+                Before an error report is sent, Paracosm asks the backend whether the
+                device belongs to a supporter, so that supporters' reports can be
+                marked and looked at first. The encrypted attachment includes the same
+                one-way hashes of the device's Android ID and of the unlock purchase's
+                token that supporter records use.
+            </p>
+            <p>
                 Submitted reports may be retained by the developer for investigating
                 errors, resolving bugs, and improving application reliability.
             </p>
         </section>
 
         <section>
-            <h2>10. Data Security</h2>
+            <h2>11. Data Security</h2>
             <p>
                 Paracosm uses HTTPS connections when communicating with Venice,
                 Google, and Firebase services. The user's Venice API key is stored in
@@ -278,7 +320,7 @@
         </section>
 
         <section>
-            <h2>11. Data Retention and Deletion</h2>
+            <h2>12. Data Retention and Deletion</h2>
             <p>
                 Local application data generally remains on the device until
                 the user deletes it or removes the application's local data.
@@ -295,20 +337,21 @@
             </p>
             <p>
                 Trial records are kept for as long as Paracosm offers trials, so
-                that a trial cannot be reused. Content reports and diagnostic
+                that a trial cannot be reused. Supporter records are kept for as
+                long as Paracosm recognises supporters. Content reports and diagnostic
                 reports are kept for as long as they are useful for investigating
                 problems.
             </p>
             <p>
-                Users may request deletion of reports they submitted, or of their
-                device's trial record, by contacting the email address below.
+                Users may request deletion of reports they submitted, of their
+                device's trial record, or of their supporter record, by contacting the email address below.
                 Additional information may be needed to identify the relevant
                 record.
             </p>
         </section>
 
         <section>
-            <h2>12. Children's Privacy</h2>
+            <h2>13. Children's Privacy</h2>
             <p>
                 Paracosm is intended only for adults aged 18 and older, and is not
                 directed to children. The developer does not knowingly collect
@@ -319,7 +362,7 @@
         </section>
 
         <section>
-            <h2>13. Third-Party Services</h2>
+            <h2>14. Third-Party Services</h2>
             <p>
                 Paracosm integrates with Venice, Google Sign-In, Google Drive, Google
                 Firebase, Google Play services, and Google Play Billing. Through
@@ -336,7 +379,7 @@
         </section>
 
         <section>
-            <h2>14. Changes to This Policy</h2>
+            <h2>15. Changes to This Policy</h2>
             <p>
                 This Privacy Policy may be updated when Paracosm introduces
                 new features, integrations, or data-handling practices.
@@ -345,7 +388,7 @@
         </section>
 
         <section>
-            <h2>15. Contact</h2>
+            <h2>16. Contact</h2>
             <p>
                 For questions about privacy, data handling, or deletion requests,
                 contact the developer at:
