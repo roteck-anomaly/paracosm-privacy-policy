@@ -45,7 +45,7 @@
     <header>
         <div class="brand">Paracosm</div>
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: November 18, 2026</p>
+        <p class="updated">Last updated: November 21, 2026</p>
     </header>
 
     <main>
@@ -84,6 +84,11 @@
                 device. The Android ID itself is never stored in a backup.
             </p>
             <p>
+                Paracosm also stores on the device whether it has been unlocked, and
+                when its free trial ends, so that it can check both without a network
+                connection.
+            </p>
+            <p>
                 This information remains on the device unless a feature requiring
                 external processing, synchronization, or sharing is used.
             </p>
@@ -92,14 +97,16 @@
         <section>
             <h2>3. AI Processing</h2>
             <p>
-                Paracosm uses AI models from two providers to generate narrative
-                responses, character dialogue, story summaries, and other fictional
-                content: Google's Gemini API and Anthropic's Claude API. The user
-                chooses which provider and model each Paracosm uses.
+                Paracosm uses AI models to generate narrative responses, character
+                dialogue, story summaries, and other fictional content. Every model is
+                reached through Venice (venice.ai), an AI service that passes each
+                request to the company that makes the chosen model, such as Google
+                (Gemini), Anthropic (Claude), OpenAI (GPT), or Moonshot AI (Kimi). The
+                user chooses which model each Paracosm uses.
             </p>
             <p>
                 To provide these features, Paracosm transmits relevant information
-                directly from the device to the chosen provider, which may include:
+                directly from the device to Venice, which may include:
             </p>
             <ul>
                 <li>User-written messages and conversation history.</li>
@@ -108,38 +115,51 @@
                 <li>Other user-created content included in AI requests.</li>
             </ul>
             <p>
-                Requests are made with the user's own API key for that provider.
-                While Paracosm is in testing, requests to Google may instead be made
-                with an API key provided by the developer. The developer does not
+                Requests are made with the user's own Venice API key and are billed to
+                the user's Venice account. They go straight from the device to Venice
+                and never pass through the developer's backend. The developer does not
                 receive or store the content of these requests.
             </p>
             <p>
-                Providers may temporarily cache request content to support
-                processing and performance. Google and Anthropic may also retain or
-                process submitted information according to their applicable service
-                terms and policies.
+                Venice states that it does not store the content of requests or
+                responses, and that it prohibits the companies that make its models
+                from storing, retaining, or using that content beyond the time needed
+                to return a response. Those companies do receive the content of each
+                request in order to process it. Venice's handling of requests is
+                described in its <a href="https://venice.ai/legal/privacy-
+                policy">Privacy Policy</a>.
             </p>
             <p>
-                Users should avoid including sensitive personal information in
-                content they do not wish to transmit to an external AI provider.
+                Users should avoid including sensitive personal information in content
+                they do not wish to transmit to an external AI service.
             </p>
         </section>
 
         <section>
             <h2>4. Character Portrait Generation</h2>
             <p>
-                Paracosm supports optional AI-generated character portraits.
-                Character descriptions and, when the user chooses to use one, the
-                character's current portrait as a reference image are transmitted
-                to Google's Gemini services to generate portraits.
+                Paracosm supports optional AI-generated character portraits, which are
+                generated through Venice with the user's own Venice API key. Character
+                descriptions and, when the user chooses to use one, the character's
+                current portrait as a reference image are transmitted to Venice, which
+                passes them to the company that makes the chosen image model.
+            </p>
+            <p>
+                Some portraits are kept modest, for example when the user's Venice
+                account does not have Venice's Pro plan, or when the character is not
+                clearly an adult. For these, Paracosm first sends a copy of the
+                character's description through Venice to an AI model that removes
+                mature details. That copy is only used for the portrait and is never
+                saved. Whether the user's Venice account has the Pro plan is a setting
+                the user chooses, stored on the device.
             </p>
             <p>
                 When a user uploads a photo as a character's portrait, Paracosm asks
                 whether it is a photo of a real person. If the user answers yes,
                 Paracosm stores a small marker beside the portrait on the device, and
-                every portrait generated from that photo is kept modest. The marker
-                is included when the character is backed up, synchronized, or
-                shared. It is never sent to an AI provider.
+                every portrait generated from that photo is kept modest. The marker is
+                included when the character is backed up, synchronized, or shared. It
+                is never sent to an AI service.
             </p>
         </section>
 
@@ -176,21 +196,27 @@
         </section>
 
         <section>
-            <h2>7. Free Trial Verification</h2>
+            <h2>7. Free Trial and Unlock Purchase</h2>
             <p>
-                When Paracosm offers a free trial, it verifies the trial with the
-                developer's backend, which runs on Google Firebase. To do so,
-                Paracosm sends the device's Android ID to the backend, where it is
-                immediately converted into a one-way (SHA-256) hash. Only the hash,
-                together with the trial's start and end times, is stored, so that a
-                trial cannot be restarted on the same device. The Android ID itself
-                is never stored.
+                Paracosm offers a free trial, which it verifies with the developer's
+                backend, running on Google Firebase. To do so, Paracosm sends the
+                device's Android ID to the backend, where it is immediately converted
+                into a one-way (SHA-256) hash. Only the hash, together with the
+                trial's start and end times, is stored, so that a trial cannot be
+                restarted on the same device. The Android ID itself is never stored.
             </p>
             <p>
                 Requests to the backend are protected by Firebase App Check, which
                 uses Google Play Integrity to confirm that they come from a genuine
                 copy of Paracosm. Google processes device integrity information for
                 this purpose according to its own policies.
+            </p>
+            <p>
+                Paracosm can be unlocked with a one-time purchase made through Google
+                Play. Google Play processes the payment under its own terms and
+                privacy policy. Paracosm never receives payment details, and asks
+                Google Play only whether the user's Google Play account owns the
+                unlock.
             </p>
         </section>
 
@@ -235,19 +261,19 @@
         <section>
             <h2>10. Data Security</h2>
             <p>
-                Paracosm uses HTTPS connections when communicating with Google,
-                Anthropic, and Firebase services. User-provided API keys are stored
-                in encrypted local storage backed by Android's security facilities,
-                and are sent only to the provider they belong to.
+                Paracosm uses HTTPS connections when communicating with Venice,
+                Google, and Firebase services. The user's Venice API key is stored in
+                encrypted local storage backed by Android's security facilities, and
+                is sent only to Venice.
             </p>
             <p>
-                Error-report attachments are encrypted before being prepared
-                for transmission.
+                Error-report attachments are encrypted before being prepared for
+                transmission.
             </p>
             <p>
-                No method of electronic storage or transmission is completely
-                risk-free. External providers are responsible for their own
-                infrastructure and data-handling practices.
+                No method of electronic storage or transmission is completely risk-
+                free. External services are responsible for their own infrastructure
+                and data-handling practices.
             </p>
         </section>
 
@@ -264,8 +290,8 @@
                 cloud copies.
             </p>
             <p>
-                Data transmitted to Google or Anthropic is subject to that
-                provider's applicable retention and deletion practices.
+                Data transmitted to Venice, and to the companies that make its models,
+                is subject to their own retention and deletion practices.
             </p>
             <p>
                 Trial records are kept for as long as Paracosm offers trials, so
@@ -295,16 +321,17 @@
         <section>
             <h2>13. Third-Party Services</h2>
             <p>
-                Paracosm integrates with Google's Gemini API, Anthropic's Claude
-                API, Google Sign-In, Google Drive, Google Firebase, and Google Play
-                services. These services operate under their applicable terms and
-                privacy policies.
+                Paracosm integrates with Venice, Google Sign-In, Google Drive, Google
+                Firebase, Google Play services, and Google Play Billing. Through
+                Venice, requests also reach the companies that make Venice's models.
+                These services operate under their applicable terms and privacy
+                policies.
             </p>
             <p>
+                Venice's privacy information is available at
+                <a href="https://venice.ai/legal/privacy-policy">venice.ai/legal/privacy-policy</a>.
                 Google's privacy information is available at
                 <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>.
-                Anthropic's privacy information is available at
-                <a href="https://www.anthropic.com/legal/privacy">anthropic.com/legal/privacy</a>.
             </p>
         </section>
 
